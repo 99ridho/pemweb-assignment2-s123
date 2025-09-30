@@ -1,0 +1,562 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --bg-color1: #0b2545;
+  --bg-color2: #133a5e;
+  --text-color: #eef4ed;
+  --accent-color: #ffc107;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-color1);
+  color: var(--text-color);
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* --- Gaya Default untuk Mobile --- */
+
+.header {
+  top: 0;
+  background-color: var(--bg-color1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+  padding: 15px 0;
+}
+
+.header h2 {
+  width: 100%;
+}
+
+.header .header-right {
+  display: flex;
+  align-items: center;
+}
+
+.unit-toggle {
+  display: flex;
+  background-color: var(--bg-color2);
+  border-radius: 20px;
+  padding: 4px;
+  cursor: pointer;
+  margin-left: 15px; /* Memberi jarak dari judul */
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 22px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.unit-toggle span {
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.unit-toggle span.active {
+  background-color: #fff;
+  color: var(--bg-color1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header .weather-input {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  position: relative;
+}
+
+.header .input-group {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.header #locationBtn {
+  width: 100%;
+  color: #212529;
+  background-color: var(--accent-color);
+}
+
+.header #city_input {
+  background-color: var(--bg-color2);
+  border: none;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 25px;
+  color: #fff;
+  flex-grow: 1;
+}
+
+.header #city_input:focus {
+  outline: none;
+}
+
+.header #searchBtn,
+.header #locationBtn {
+  border: none;
+  font-size: 16px;
+  padding: 14px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.header #searchBtn {
+  background-color: #fff;
+}
+
+.weather-data {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* Semua kartu sekarang anak langsung dari .weather-data */
+.weather-left,
+.highlights,
+.hourly-forecast {
+  grid-column: span 1;
+  min-width: 0;
+}
+
+.card {
+  background-color: var(--bg-color2);
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.card.hourly-forecast {
+  overflow: hidden;
+}
+
+.card p {
+  font-size: 14px;
+  color: #999;
+}
+
+.card h2 {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.current-weather .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#favoriteBtn {
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+#favoriteBtn.active {
+  color: var(--accent-color);
+  transform: scale(1.2);
+}
+
+.current-weather .details {
+  margin-top: 10px;
+}
+
+.current-weather h2 {
+  margin: 7px 0;
+}
+
+.current-weather p {
+  color: var(--text-color);
+}
+
+.high-low-temp {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  flex-wrap: nowrap;
+}
+
+.high-low-temp p {
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.high-low-temp i {
+  margin-right: 5px;
+}
+
+.current-weather hr {
+  border: 1px solid var(--bg-color1);
+  margin: 15px 0;
+}
+
+.forecast-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+}
+.forecast-item:hover {
+  background-color: var(--bg-color1);
+}
+.forecast-item .icon-wrapper img {
+  width: 40px;
+}
+.forecast-item p {
+  font-weight: 500;
+  color: var(--text-color);
+}
+.forecast-item .day-temp {
+  text-align: right;
+}
+
+.highlights-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.highlights-item.air-quality-card,
+.highlights-item.sunrise-sunset-card {
+  grid-column: span 1;
+}
+
+.highlights-item {
+  background-color: var(--bg-color1);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.highlights-item p {
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.header-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-item .bad {
+  background-color: #b03a2e;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #fff;
+}
+.header-item .good {
+  background-color: #28a745;
+}
+.header-item .fair {
+  background-color: #ffc107;
+  color: #000;
+}
+.header-item .moderate {
+  background-color: #fd7e14;
+}
+.header-item .poor {
+  background-color: #dc3545;
+}
+.header-item .very-poor {
+  background-color: #800080;
+}
+
+.air-quality-details,
+.sunrise-sunset-details {
+  margin-top: 10px;
+}
+.air-quality-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 10px;
+}
+.air-quality-data,
+.sun-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.air-quality-data i,
+.sun-item i {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+.sunrise-sunset-details {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.detail-item i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.hourly-forecast-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.hourly-item {
+  background-color: var(--bg-color1);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  min-width: 80px;
+}
+
+.hourly-item img {
+  width: 50px;
+  height: 50px;
+}
+
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-color2);
+  border-radius: 10px;
+  margin-top: 5px;
+  overflow: hidden;
+  display: none;
+  z-index: 99;
+}
+
+.search-suggestions div {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.search-suggestions div:hover {
+  background-color: var(--bg-color1);
+}
+
+.favorites-card {
+  margin-top: 15px;
+}
+.favorites-list div {
+  padding: 10px 5px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--bg-color1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.favorites-list div:last-child {
+  border-bottom: none;
+}
+.favorites-list div:hover {
+  background-color: var(--bg-color1);
+  border-radius: 5px;
+}
+.favorites-list .remove-fav {
+  color: #e74c3c;
+  font-size: 16px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.2s;
+}
+.favorites-list div:hover .remove-fav {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* --- Media Query untuk Tablet dan Desktop --- */
+@media (min-width: 768px) {
+  .header {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .header h2,
+  .header .weather-input,
+  .header .input-group,
+  .header #locationBtn {
+    width: auto;
+  }
+  .header .weather-input {
+    flex-wrap: nowrap;
+  }
+
+  /* Aturan Tata Letak Utama yang Baru */
+  .weather-data {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto; /* Biarkan tinggi baris otomatis */
+    gap: 15px; /* Sedikit gap agar tidak terlalu rapat */
+  }
+
+  .weather-left {
+    grid-column: 1 / 2; /* Kolom pertama */
+    grid-row: 1 / 4; /* Memanjang ke bawah sebanyak 3 baris item */
+  }
+
+  /* Aturan Posisi Baru untuk Highlights */
+  .highlights {
+    grid-column: 2 / 5; /* Membentang dari kolom 2 hingga akhir (kolom 4) */
+    grid-row: 1 / 2; /* Berada di baris pertama */
+  }
+
+  /* Aturan Posisi Baru untuk Hourly Forecast */
+  .hourly-forecast {
+    grid-column: 2 / 5; /* Membentang dari kolom 2 hingga akhir */
+    grid-row: 2 / 3; /* Berada di baris kedua, tepat di bawah Highlights */
+  }
+
+  .highlights-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .highlights-item.air-quality-card {
+    grid-column: span 3;
+  }
+  .highlights-item.sunrise-sunset-card {
+    grid-column: span 2;
+  }
+
+  .highlights-item .detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .highlights-item .detail-item span {
+    font-size: 36px;
+    font-weight: 600;
+  }
+  .highlights-item .detail-item i {
+    font-size: 30px;
+  }
+}
+
+/* style.css */
+
+/* --- Gaya untuk Loading Spinner --- */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  visibility: hidden; /* Sembunyi secara default */
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.loading-overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Definisi Warna untuk Tema Terang --- */
+body.light-theme {
+  --bg-color1: #f4f7fa; /* Abu-abu sangat terang */
+  --bg-color2: #ffffff; /* Putih */
+  --text-color: #212529; /* Hitam pekat */
+}
+
+body.light-theme .header #city_input::placeholder {
+  color: #6c757d; /* Warna abu-abu yang lebih gelap */
+}
+
+/* Penyesuaian kecil agar elemen tetap terlihat di tema terang */
+body.light-theme .header #city_input {
+  background-color: #eef4ed;
+  color: #000;
+  border: 1px solid #dce4e3;
+}
+
+body.light-theme .unit-toggle {
+  background-color: #e0e5ec;
+}
+
+body.light-theme .unit-toggle span.active {
+  background-color: var(--bg-color1);
+  color: var(--text-color);
+}
+
+body.light-theme .theme-btn {
+  color: var(--text-color);
+}
+
+body.light-theme .search-suggestions {
+  background-color: #fff;
+  border: 1px solid #dce4e3;
+}
+
+body.light-theme .search-suggestions div:hover {
+  background-color: #f4f7fa;
+}
+
+body.light-theme .forecast-item:hover,
+body.light-theme .favorites-list div:hover {
+  background-color: #eef4ed;
+}
+
+/* style.css */
+.forecast-item:focus,
+.favorites-list div:focus,
+.search-suggestions div:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+  border-radius: 5px;
+}
